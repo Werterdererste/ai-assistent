@@ -1,3 +1,4 @@
+import audio_interface
 from model_tinyllama import TinyLlama11b
 from status_led import LED
 from button import Button
@@ -6,7 +7,9 @@ from translater import Translater
 
 class Program:
     def main(self):
-        print("test")
+        audio_interface: AudioInterface = AudioInterface()
+        audio_interface.speak("audios/warnings3")
+
         tinyllam: TinyLlama11b = TinyLlama11b()
         print(tinyllam.send("why is the sky blue"))
 
