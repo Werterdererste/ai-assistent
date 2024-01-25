@@ -6,8 +6,9 @@ from translater import Translater
 
 class Program:
     def main(self):
+        print("test")
         tinyllam: TinyLlama11b = TinyLlama11b()
-        tinyllam.send("why is the sky blue")
+        print(tinyllam.send("why is the sky blue"))
 
 
 

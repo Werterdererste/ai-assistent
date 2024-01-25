@@ -10,5 +10,4 @@ class TinyLlama11b:
             'content': prompt,
         },
         ])
-        output: str = str(response['message']['content'])
-        return "output"
+        return str(response['message']['content'])
