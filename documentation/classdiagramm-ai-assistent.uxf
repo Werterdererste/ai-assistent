@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>470</y>
+      <w>240</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>AudiInterface
+--
+
+--
++ Lisen(): xxx
++ Speek(message xxx): </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>440</y>
+      <w>240</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>schnitstelluAI
+--
+model: string
+--
++ SendPromt(promt str): sr</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>730</y>
+      <w>290</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Programm
+--
+- instansen from classes
+--
++ main()
+(flags)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>960</y>
+      <w>220</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>status_led
+--
+- gpioPin_R: int
+- gpioPin_G: int
+- gpioPin_B: int
+--
+off()
+red()
+blue()
+green()
+yellow()
+magenta()
+lightblue()
+white()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>880</y>
+      <w>250</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Translater
+--
+
+--
++ Audio-To-Text(audioclip xxx):str
++ Text-To-Audio(text str):str
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>750</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Button
+--
+- gpiopin
+--
++ isPress(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>480</y>
+      <w>200</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>tinyllama11b
+--
+model: str
+--
++ SendPromt(promt str): str</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>580</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+</diagram>
