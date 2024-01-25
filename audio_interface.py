@@ -9,4 +9,3 @@ class AudioInterface:
 
     def speak(self, sound):
         playsound(sound)
-        raise NotImplementedError
