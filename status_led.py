@@ -1,51 +1,138 @@
+import RPi.GPIO as GPIO
 
 class LED:
+    """
+    code für eine LED
+    """
 
-    def __init__(self, gpioPin_R: int = 1, gpioPin_G: int = 1, gpioPin_B: int = 1):
+    def __init__(self, gpioPin_R: int, gpioPin_G: int, gpioPin_B: int):
+        """
+        Constructor zum Setzen der Ansteuerung pinns.
+        :param gpioPin_R:
+        :param gpioPin_G:
+        :param gpioPin_B:
+        """
         self.gpioPin_R: int = gpioPin_R
         self.gpioPin_G: int = gpioPin_G
         self.gpioPin_B: int = gpioPin_B
 
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self.gpioPin_R, GPIO.OUT)
+        GPIO.setup(self.gpioPin_G, GPIO.OUT)
+        GPIO.setup(self.gpioPin_B, GPIO.OUT)
+
     def off(self):
-        raise NotImplementedError
+        """
+        Schalltet LED aus
+        :return:
+        """
+        GPIO.output(self.gpioPin_R, False)
+        GPIO.output(self.gpioPin_G, False)
+        GPIO.output(self.gpioPin_B, False)
+        print("led off")
+
+    def clean(self):
+        """
+        gibt alle pins frei.
+        ! Beim Schließen ausführen
+        :return:
+        """
+        GPIO.cleanup()
+        print("led clean")
 
     def white(self):
-        #r on
-        #g on
-        #b on
-        raise NotImplementedError
+        """
+        LED farbe Weiß
+        R on
+        G on
+        B on
+        :return:
+        """
+        GPIO.output(self.gpioPin_R, True)
+        GPIO.output(self.gpioPin_G, True)
+        GPIO.output(self.gpioPin_B, True)
+        print("led white")
 
     def red(self):
-        #r on
-        #g off
-        #b off
-        raise NotImplementedError
+        """
+        LED farbe Rot
+
+        R on
+        G off
+        B on
+        :return:
+        """
+        GPIO.output(self.gpioPin_R, True)
+        GPIO.output(self.gpioPin_G, False)
+        GPIO.output(self.gpioPin_B, False)
+        print("led red")
 
     def green(self):
-        # r off
-        # g on
-        # b off
-        raise NotImplementedError
+        """
+        LED farbe Grün
+
+        R off
+        G on
+        B off
+        :return:
+        """
+        GPIO.output(self.gpioPin_R, False)
+        GPIO.output(self.gpioPin_G, True)
+        GPIO.output(self.gpioPin_B, False)
+        print("led green")
 
     def blue(self):
-        # r off
-        # g off
-        # b on
-        raise NotImplementedError
+        """
+        LED farbe Blau
+
+        R off
+        G off
+        B off
+        :return:
+        """
+        GPIO.output(self.gpioPin_R, False)
+        GPIO.output(self.gpioPin_G, False)
+        GPIO.output(self.gpioPin_B, True)
+        print("led blue")
 
     def yellow(self):
-        # r on
-        # g on
-        # b off
-        raise NotImplementedError
+        """
+        LED farbe Gelb
+
+        R on
+        G on
+        B on
+        :return:
+        """
+        GPIO.output(self.gpioPin_R, True)
+        GPIO.output(self.gpioPin_G, True)
+        GPIO.output(self.gpioPin_B, False)
+        print("led yellow")
 
     def lightblue(self):
-        # r off
-        # g on
-        # b off
-        raise NotImplementedError
+        """
+        LED farbe Hellblau
+
+        R off
+        G on
+        B on
+        :return:
+        """
+        GPIO.output(self.gpioPin_R, False)
+        GPIO.output(self.gpioPin_G, True)
+        GPIO.output(self.gpioPin_B, True)
+        print("led lightblue")
+
     def magenta(self):
-        # r on
-        # g off
-        # b on
-        raise NotImplementedError
+        """
+        LED farbe Magenta
+
+        R on
+        G off
+        B on
+        :return:
+        """
+        GPIO.output(self.gpioPin_R, True)
+        GPIO.output(self.gpioPin_G, False)
+        GPIO.output(self.gpioPin_B, True)
+        print("led magenta")
