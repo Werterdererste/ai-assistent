@@ -24,6 +24,7 @@ class Program:
     def main(self):
         print("test")
         while True:
+            sleep(0.2)
             self.button.isPress()
         #  self.led_test()
         #self.audio.speak(self.modelTest.send("You can queue up multiple items."))
