@@ -15,6 +15,4 @@ class Button:
         :return:
         """
         if GPIO.input(self.gpioPin) == GPIO.HIGH:
-            return "True"
-        else:
-            return "False"
+            print("True")

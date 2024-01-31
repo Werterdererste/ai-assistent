@@ -15,7 +15,7 @@ class Program:
         #self.tinyllama: TinyLlama11b = TinyLlama11b()
         # TODO: pins
         self.status_led: LED = LED(gpioPin_R=22, gpioPin_G=24, gpioPin_B=26)
-        self.button: Button = Button(gpioPin=32)
+        self.button: Button = Button(gpioPin=37)
         self.audio: AudioInterface = AudioInterface()
         self.translater: Translater = Translater()
 
@@ -24,7 +24,7 @@ class Program:
     def main(self):
         print("test")
         while True:
-            print(self.button.isPress())
+            self.button.isPress()
         #  self.led_test()
         #self.audio.speak(self.modelTest.send("You can queue up multiple items."))
       #  self.status_led.clean()
