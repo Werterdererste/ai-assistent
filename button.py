@@ -9,10 +9,12 @@ class Button:
 
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.gpioPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    def isPress(self) -> bool:
+    def isPress(self) -> str:
         """
         liefert einen wert zurück ob der button gedrückt wird
         :return:
         """
         if GPIO.input(self.gpioPin) == GPIO.HIGH:
-            return True
+            return "True"
+        else:
+            return "False"
