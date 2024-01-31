@@ -14,7 +14,7 @@ class Program:
     def __init__(self):
         #self.tinyllama: TinyLlama11b = TinyLlama11b()
         # TODO: pins
-        self.status_led: LED = LED()
+        self.status_led: LED = LED(gpioPin_R=22,gpioPin_G=24,gpioPin_B=24)
         self.button: Button = Button(1)
         self.audio: AudioInterface = AudioInterface()
         self.translater: Translater = Translater()
@@ -23,7 +23,8 @@ class Program:
 
     def main(self):
         print("test")
-        self.audio.speak(self.modelTest.send("You can queue up multiple items."))
+        self.led_test()
+        # self.audio.speak(self.modelTest.send("You can queue up multiple items."))
 
     def led_test(self):
         sleep(5)
