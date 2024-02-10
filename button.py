@@ -1,4 +1,9 @@
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+except RuntimeError:
+    import Mock.GPIO as GPIO
+from time import sleep
+
 
 class Button:
     """
@@ -9,10 +14,21 @@ class Button:
 
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.gpioPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    def isPress(self) -> str:
+
+    def press(self) -> bool:
         """
-        liefert einen wert zurück ob der button gedrückt wird
+        liefert true zurück wen der button gedrückt wird
         :return:
         """
-        if GPIO.input(self.gpioPin) == GPIO.HIGH:
-            print("True")
+        if GPIO.input(self.gpioPin) or input("run y/n: ") == "y":
+            return True
+        sleep(1)
+
+    def clean(self):
+        """
+        gibt alle pins frei.
+        ! Beim Schließen ausführen
+        :return:
+        """
+        GPIO.cleanup()
+        print("button clean")

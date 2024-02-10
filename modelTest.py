@@ -10,4 +10,7 @@ class ModelTest:
         :param prompt:
         :return:
         """
-        return "You ask " + prompt + "i wouldn't dont answer it"
+        if prompt != None:
+            return "You ask " + prompt + "i wouldn't dont answer it"
+        else:
+            return "I can't understand you."

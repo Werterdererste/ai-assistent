@@ -5,6 +5,7 @@ from button import Button
 from audio_interface import AudioInterface
 from translater import Translater
 from modelTest import ModelTest
+from controller_assistent import ControllerAssistent
 
 from time import sleep
 
@@ -12,23 +13,17 @@ from time import sleep
 class Program:
 
     def __init__(self):
-        #self.tinyllama: TinyLlama11b = TinyLlama11b()
-        # TODO: pins
+        self.tinyllama: TinyLlama11b = TinyLlama11b()
+
         self.status_led: LED = LED(gpioPin_R=22, gpioPin_G=24, gpioPin_B=26)
         self.button: Button = Button(gpioPin=37)
         self.audio: AudioInterface = AudioInterface()
         self.translater: Translater = Translater()
-
         self.modelTest: ModelTest = ModelTest()
+        self.controller = ControllerAssistent(self.status_led, self.button, self.audio, self.modelTest)
 
     def main(self):
-        print("test")
-        while True:
-            sleep(0.2)
-            self.button.isPress()
-        #  self.led_test()
-        #self.audio.speak(self.modelTest.send("You can queue up multiple items."))
-      #  self.status_led.clean()
+        self.controller.speak_assistent()
 
     def led_test(self):
         sleep(5)
@@ -52,5 +47,3 @@ class Program:
 if __name__ == '__main__':
     program: Program = Program()
     program.main()
-
-

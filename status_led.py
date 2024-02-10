@@ -1,8 +1,11 @@
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+except RuntimeError:
+    import Mock.GPIO as GPIO
 
 class LED:
     """
-    code für eine LED
+    Ansteuerungs code für eine LED
     """
 
     def __init__(self, gpioPin_R: int, gpioPin_G: int, gpioPin_B: int):
@@ -59,7 +62,7 @@ class LED:
 
         R on
         G off
-        B on
+        B off
         :return:
         """
         GPIO.output(self.gpioPin_R, True)
@@ -87,7 +90,7 @@ class LED:
 
         R off
         G off
-        B off
+        B on
         :return:
         """
         GPIO.output(self.gpioPin_R, False)
@@ -101,7 +104,7 @@ class LED:
 
         R on
         G on
-        B on
+        B off
         :return:
         """
         GPIO.output(self.gpioPin_R, True)
