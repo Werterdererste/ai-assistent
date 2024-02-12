@@ -1,12 +1,14 @@
+import time
+
 from status_led import LED
 from button import Button
 from audio_interface import AudioInterface
-from modelTest import ModelTest
+from models import IModels
 
 
 class ControllerAssistent:
 
-    def __init__(self, led: LED, button: Button, audio: AudioInterface, model: ModelTest):
+    def __init__(self, led: LED, button: Button, audio: AudioInterface, model: IModels):
         self.led = led
         self.button = button
         self.audio = audio
@@ -21,22 +23,52 @@ class ControllerAssistent:
         """
 
         try:
+            self.led.green()
+
             while self.active:
 
-                self.led.green()
                 if self.button.press():
 
                     self.led.blue()
                     query = self.audio.listen()
                     print(query)
 
-                    self.led.yellow()
-                    response = self.model.send(query)
-                    print(response)
+                    if query is not None:
+                        self.led.yellow()
+                        response = self.model.send(query)
+                        print(response)
 
-                    self.led.white()
-                    self.audio.speak(response)
+                        self.led.white()
+                        self.audio.speak(response)
+                        self.led.green()
 
+                    else:
+                        self.led.red()
+                        self.audio.speak("Sorry but i can't understand you.")
+
+                        time.sleep(5)
+                        self.led.green()
+
+        except KeyboardInterrupt:
+            print("exit")
+            self.active = False
+        except:
+            self.led.red()
+        finally:
+            self.led.clean()
+            self.button.clean()
+
+    def cat_assistent(self):
+        try:
+            self.led.green()
+            while self.active:
+                query = input("How is you question? ")
+
+                self.led.yellow()
+                response = self.model.send(query)
+
+                print(response)
+                self.led.green()
         except KeyboardInterrupt:
             print("exit")
             self.active = False
