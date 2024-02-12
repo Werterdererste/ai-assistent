@@ -3,6 +3,7 @@ try:
 except RuntimeError:
     import Mock.GPIO as GPIO
 
+
 class LED:
     """
     Ansteuerungs code für eine LED

@@ -13,8 +13,12 @@ class AudioInterface:
         recognizer = sr.Recognizer()
 
         with sr.Microphone() as source:
-            print("Listening...")
+
+            recognizer.dynamic_energy_threshold = True
+            recognizer.energy_threshold = 8000
+
             recognizer.adjust_for_ambient_noise(source)
+            print("Listening...")
             audio_data = recognizer.listen(source)
             print("Processing...")
 
@@ -35,7 +39,7 @@ class AudioInterface:
         :return:
         """
         engine = pyttsx3.init()
-        engine.setProperty('rate', 150)
+        engine.setProperty('rate', 160)
         engine.setProperty('volume', 0.4)
 
         engine.say(text)

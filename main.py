@@ -11,7 +11,7 @@ from time import sleep
 class Program:
 
     def __init__(self):
-        self.model: IModels = TestModel()
+        self.model: IModels = TinyLlama11b()
 
         self.status_led: LED = LED(gpioPin_R=22, gpioPin_G=24, gpioPin_B=26)
         self.button: Button = Button(gpioPin=37)
