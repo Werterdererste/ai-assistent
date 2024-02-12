@@ -1,11 +1,9 @@
 import audio_interface
-from model_tinyllama import TinyLlama11b
 from status_led import LED
 from button import Button
 from audio_interface import AudioInterface
-from translater import Translater
-from modelTest import ModelTest
 from controller_assistent import ControllerAssistent
+from models import IModels, TestModel, TinyLlama11b
 
 from time import sleep
 
@@ -13,14 +11,12 @@ from time import sleep
 class Program:
 
     def __init__(self):
-        self.tinyllama: TinyLlama11b = TinyLlama11b()
+        self.model: IModels = TestModel()
 
         self.status_led: LED = LED(gpioPin_R=22, gpioPin_G=24, gpioPin_B=26)
         self.button: Button = Button(gpioPin=37)
         self.audio: AudioInterface = AudioInterface()
-        self.translater: Translater = Translater()
-        self.modelTest: ModelTest = ModelTest()
-        self.controller = ControllerAssistent(self.status_led, self.button, self.audio, self.modelTest)
+        self.controller = ControllerAssistent(self.status_led, self.button, self.audio, self.model)
 
     def main(self):
         self.controller.speak_assistent()
