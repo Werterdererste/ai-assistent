@@ -4,15 +4,17 @@ from status_led import LED
 from button import Button
 from audio_interface import AudioInterface
 from models import IModels
-
+from web_interface import WebInterface
 
 class ControllerAssistent:
 
-    def __init__(self, led: LED, button: Button, audio: AudioInterface, model: IModels):
+    def __init__(self, led: LED, button: Button, audio: AudioInterface, model: IModels, web_interface: WebInterface):
         self.led = led
         self.button = button
         self.audio = audio
         self.model = model
+        self.web_interface = web_interface
+
         self.active = True
 
     def speak_assistent(self):
@@ -77,4 +79,4 @@ class ControllerAssistent:
             self.button.clean()
 
     def web_assistent(self):
-        raise NotImplementedError
+        self.web_interface.start()
