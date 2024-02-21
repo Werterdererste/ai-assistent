@@ -13,7 +13,7 @@ class Button:
         self.gpioPin = gpioPin
 
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(self.gpioPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        GPIO.setup(self.gpioPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     def press(self) -> bool:
         """
