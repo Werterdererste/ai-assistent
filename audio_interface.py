@@ -44,3 +44,9 @@ class AudioInterface:
 
         engine.say(text)
         engine.runAndWait()
+
+if __name__ == '__main__':
+    audio = AudioInterface()
+    audio.speak("test")
+    test = audio.listen()
+    print(test)
