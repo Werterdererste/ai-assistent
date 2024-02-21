@@ -22,7 +22,7 @@ class Button:
         """
         if GPIO.input(self.gpioPin):
             return True
-        sleep(1)
+        return False
 
     def clean(self):
         """
