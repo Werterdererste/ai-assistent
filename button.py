@@ -20,7 +20,7 @@ class Button:
         liefert true zurück wen der button gedrückt wird
         :return:
         """
-        if GPIO.input(self.gpioPin):
+        if not GPIO.input(self.gpioPin):
             return True
         return False
 
