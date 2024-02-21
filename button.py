@@ -13,14 +13,14 @@ class Button:
         self.gpioPin = gpioPin
 
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(self.gpioPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.gpioPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     def press(self) -> bool:
         """
         liefert true zurück wen der button gedrückt wird
         :return:
         """
-        if GPIO.input(self.gpioPin) or input("run y/n: ") == "y":
+        if GPIO.input(self.gpioPin):
             return True
         sleep(1)
 
