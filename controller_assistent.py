@@ -51,6 +51,7 @@ class ControllerAssistent:
 
                         time.sleep(5)
                         self.led.green()
+                print("wait")
 
         except KeyboardInterrupt:
             print("exit")
