@@ -1,5 +1,5 @@
 import pyttsx3
-from pocketsphinx import LiveSpeech
+#from pocketsphinx import LiveSpeech
 import speech_recognition as sr
 
 
