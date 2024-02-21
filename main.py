@@ -25,7 +25,8 @@ class Program:
         self.controller = ControllerAssistent(self.status_led, self.button, self.audio, self.model, self.webInterface)
 
     def main(self, mode):
-       print(self.button.press())
+        while True:
+            print(self.button.press())
 
     def falses(self, mode):
         if mode == "speak":
