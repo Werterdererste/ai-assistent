@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Chat</title>
-</head>
-<body>
-    <h1>AI Assistent</h1>
+    <head>
+        <meta charset="UTF-8">
+        <title>Chat</title>
 
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/bootstrap.css') }}">
+    </head>
+    <body>
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                  AI Assistent
+                </a>
+            </div>
+        </nav>
 
-</body>
+        <div class="container m-3 p-3 h-100">
+            <p>{{ response }}</p>
+        </div>
+        <div class="m-3 align-text-bottom">
+            <form action="chat" method="post">
+
+                <div class="input-group mb-3">
+                  <input type="text" name="prompt" class="form-control" placeholder="Question" aria-describedby="question">
+                  <button class="btn btn-outline-primary" type="submit" id="question">send</button>
+                </div>
+            </form>
+        </div>
+
+        <script src="{{ url_for('static', filename= 'js/bootstrap.js') }} js/bootstrap.js"></script>
+
+    </body>
 </html>

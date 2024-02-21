@@ -6,6 +6,7 @@ from audio_interface import AudioInterface
 from models import IModels
 from web_interface import WebInterface
 
+
 class ControllerAssistent:
 
     def __init__(self, led: LED, button: Button, audio: AudioInterface, model: IModels, web_interface: WebInterface):

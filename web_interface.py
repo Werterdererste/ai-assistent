@@ -1,5 +1,10 @@
+import flask
 from flask import Flask, render_template, request
+
+
 app = Flask(__name__)
+massages = list(())
+
 
 class WebInterface:
 
@@ -12,12 +17,20 @@ class WebInterface:
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return flask.redirect('/chat')
 
 
-@app.route('/chat', methods=['GET'])
-def chat_prompt():
-    if request.form['prompt'] is not None:
-        return "true"
+@app.route('/chat', methods=['POST', 'GET'])
+def chat_post():
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        massages.append((prompt, "antwort"))
+
+        ausgabe = ""
+        for massage in massages:
+            ausgabe += "Frage: " + massage[0] + "\n Antwort: " + massage[1]
+        return render_template('chat.html', response=ausgabe)
+
     else:
-        return render_template("chat.html")
+        return render_template('chat.html')
+
