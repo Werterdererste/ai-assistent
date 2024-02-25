@@ -20,7 +20,7 @@ class Program:
         self.status_led: LED = LED(gpioPin_R=22, gpioPin_G=24, gpioPin_B=26)
         self.button: Button = Button(gpioPin=37)
         self.audio: AudioInterface = AudioInterface()
-        self.webInterface = WebInterface(port)
+        self.webInterface = WebInterface(port, self.model)
 
         self.controller = ControllerAssistent(self.status_led, self.button, self.audio, self.model, self.webInterface)
 
