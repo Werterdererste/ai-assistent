@@ -17,8 +17,8 @@ class Program:
 
         self.model: IModels = TinyLlama11b()
 
-        self.status_led: LED = LED(gpioPin_R=22, gpioPin_G=24, gpioPin_B=26)
-        self.button: Button = Button(gpioPin=37)
+        self.status_led: LED = LED(gpioPin_R=gpopPin_R, gpioPin_G=gpopPin_G, gpioPin_B=gpopPin_B)
+        self.button: Button = Button(gpioPin=gpioPin_button)
         self.audio: AudioInterface = AudioInterface()
         self.webInterface = WebInterface(port, self.model)
 

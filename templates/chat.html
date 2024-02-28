@@ -24,13 +24,11 @@
 
             <form id="prompt-form" onsubmit="event.preventDefault(); sendData();">
                 <div class="input-group">
-                  <input type="text" name="prompt" class="form-control" placeholder="Question" aria-describedby="question">
+                  <input id="question-feld" type="text" name="prompt" class="form-control" placeholder="Question" aria-describedby="question">
                     <input class="btn btn-outline-primary" type="submit" id="question">
                 </div>
             </form>
-
         </div>
-
 
         <script src="{{ url_for('static', filename= 'js/bootstrap.js') }}"></script>
         <script src="{{ url_for('static', filename= 'js/main.js') }}"></script>

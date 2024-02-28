@@ -4,6 +4,7 @@ function sendData() {
   */
   var formData = new FormData(document.getElementById("prompt-form"));
 
+  CardQuestion(document.getElementById("question-feld").value);
   var xhr = new XMLHttpRequest();
 
   xhr.open("POST", "/api/model", true);
@@ -12,7 +13,6 @@ function sendData() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       if (xhr.status == 200) {
         console.log("Data sent successfully!");
-        console.log(xhr.responseText);
         printdata(xhr.responseText);
       } else {
         console.log("Error:", xhr.status);
@@ -27,30 +27,48 @@ function sendData() {
 function printdata(data) {
   //erstlellt ein objekt aus dem json file
   obj = JSON.parse(data);
-  console.log(obj.prompt);
-  CardQuestion(obj.prompt);
   CardAnswere(obj.answer);
 }
 
 function CardQuestion(question) {
   //gib eine massagebox zurück
   var massage_container = document.getElementById("massage-container");
-  massage_container.innerHTML += `
-<div class="card text-bg-primary mb-3">
-  <div class="card-body">
-    <p class="card-text">${question}</p>
-  </div>
-</div>
-`;
+
+  var card = document.createElement("div");
+  card.classList.add("card", "text-bg-primary", "mb-3");
+
+  var cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+
+  var cardText = document.createElement("p");
+  cardText.classList.add("card-text");
+  cardText.textContent = question;
+
+  cardBody.appendChild(cardText);
+
+  card.appendChild(cardBody);
+
+  massage_container.appendChild(card);
 }
-function CardAnswere(answere) {
+
+function CardAnswere(answer) {
   //gib eine massagebox zurück
+
   var massage_container = document.getElementById("massage-container");
-  massage_container.innerHTML += `
-  <div class="card text-bg-success mb-3">
-    <div class="card-body">
-      <p class="card-text">${answere}</p>
-    </div>
-  </div>
-  `;
+
+  var card = document.createElement("div");
+  card.classList.add("card", "text-bg-success", "mb-3");
+
+  var cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+
+  var cardText = document.createElement("p");
+  cardText.classList.add("card-text");
+  cardText.textContent = answer;
+
+  cardBody.appendChild(cardText);
+
+  card.appendChild(cardBody);
+
+  massage_container.appendChild(card);
 }
