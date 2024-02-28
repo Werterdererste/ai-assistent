@@ -51,7 +51,6 @@ class ControllerAssistent:
 
                         time.sleep(5)
                         self.led.green()
-                print("wait")
 
         except KeyboardInterrupt:
             print("exit")
@@ -62,7 +61,11 @@ class ControllerAssistent:
             self.led.clean()
             self.button.clean()
 
-    def cat_assistent(self):
+    def chat_assistent(self):
+        """
+        startet einen shell chat assistent
+        :return:
+        """
         try:
             self.led.green()
             while self.active:
@@ -81,4 +84,8 @@ class ControllerAssistent:
             self.button.clean()
 
     def web_assistent(self):
+        """
+           startet einen web assistent
+           :return:
+           """
         self.web_interface.start()

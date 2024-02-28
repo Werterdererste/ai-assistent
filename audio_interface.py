@@ -8,7 +8,7 @@ class AudioInterface:
     ist die Schnittstelle zum nutzer über Sprche.
     """
 
-    def listen(self):
+    def listen(self) -> str:
 
         recognizer = sr.Recognizer()
 
@@ -45,7 +45,11 @@ class AudioInterface:
         engine.say(text)
         engine.runAndWait()
 
+
 if __name__ == '__main__':
+    """
+    audio test
+    """
     audio = AudioInterface()
     audio.speak("test")
     test = audio.listen()

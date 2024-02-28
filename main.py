@@ -28,18 +28,26 @@ class Program:
         if mode == "speak":
             self.controller.speak_assistent()
         elif mode == "text":
-            self.controller.cat_assistent()
-        elif mode == "templates":
+            self.controller.chat_assistent()
+        elif mode == "web":
             self.controller.web_assistent()
         elif mode == "speak_web":
             pass
 
     @staticmethod
     def list():
+        """
+        Listet alle installierten models auf
+        :return:
+        """
         models = ollama.list()
         print(models)
 
     def led_test(self):
+        """
+        ein kurzer test um die funktion der led zu überprüfen
+        :return:
+        """
         sleep(5)
         self.status_led.red()
         sleep(5)
@@ -59,6 +67,10 @@ class Program:
 
 
 if __name__ == '__main__':
+    """
+    Beim programm start
+    prüft die Argumente die übergeben wurden und sorgt dan dafür das dass programm Entsprechend Ausgeführt wird 
+    """
     parser = argparse.ArgumentParser(
         prog='AI Assistent',
         description='A simple ai chat for the raspberry pi',
@@ -69,15 +81,14 @@ if __name__ == '__main__':
     methode = method.add_mutually_exclusive_group()
     methode.add_argument('-s', '--speak_chat', help="a simple speak chat", action='store_true')
     methode.add_argument('-c', '--text_chat', help="a simple text chat", action='store_true')
-    methode.add_argument('-w', '--web', help="a simple templates chat interface", action='store_true')
-    methode.add_argument('-sw', '--speak_web', help="a simple speak and templates chat runs in multithreading",
-                         action='store_true')
+    methode.add_argument('-w', '--web', help="a simple web chat interface", action='store_true')
     methode.add_argument('-l', '--list', help="list all possible models that can be used", action='store_true')
 
     run_options = parser.add_argument_group(title="Settings", description="configs can be set to run")
     run_options.add_argument('-p', '--port', help="port number of webserver", type=int, default=9080)
-    run_options.add_argument('-m', '--model', help="change default model", type=str)
-    run_options.add_argument('-Sp', '--system_prompt', help="set custom system prompt", type=str)
+    # TODO: implement
+    run_options.add_argument('-m', '--model', help="change default model  NOT IMPLEMENTED", type=str)
+    run_options.add_argument('-Sp', '--system_prompt', help="set custom system prompt NOT IMPLEMENTED", type=str)
 
     raspi = parser.add_argument_group(title="Raspberry Pi ports", description="change the default prot number for the" +
                                       " Raspberry Pi ports use fromm the led and Button")
@@ -87,6 +98,7 @@ if __name__ == '__main__':
     raspi.add_argument('-b', '--button', help="pin for button", type=int, default=37)
 
     args = parser.parse_args()
+
     if args.list:
         print("list")
         # prüfen ob anderes angegeben ist
@@ -101,9 +113,7 @@ if __name__ == '__main__':
         elif args.text_chat:
             program.main("text")
         elif args.web:
-            program.main("templates")
-        elif args.speak_web:
-            program.main("speak_web")
+            program.main("web")
         else:
             parser.print_help()
             
@@ -119,7 +129,7 @@ mode
 model customization
 -l list list all models
 -m model change default model (default tinyllama1.1b) (later)
--Sp give a system Promt for a custom model (later)
+-Sp give a system Prompt for a custom model (later)
 
 options 
 -p port port for templates (default 8089)
