@@ -55,7 +55,8 @@ class ControllerAssistent:
         except KeyboardInterrupt:
             print("exit")
             self.active = False
-        except:
+        except Exception as e:
+            print(e)
             self.led.red()
         finally:
             self.led.clean()
