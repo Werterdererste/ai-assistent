@@ -29,10 +29,13 @@ wehrend des betriebs wird der raspberry zwangsläufig sehr heiß daher ist eine 
 # Einrichtung
 ## Installation
 ```bash
-chmod o+x ./install.sh
-./install.sh
+sudo apt install git
+git clone https://github.com/Werterdererste/ai-assistent.git
+cd ai-assistent
 
-virtual venv
+sudo chmod o+x ./install.sh
+sudo ./install.sh
+
 source venv/bin/activate
 pip install -r requirements.txt
 
