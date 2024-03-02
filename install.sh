@@ -12,7 +12,7 @@ fi
 /usr/bin/echo no guarantee that is does.
 /usr/bin/echo on other systems IT DONT WORK
 
-/usr/bin/read -p "Do you want to proceed? (y/n) " answer
+read -p "Do you want to proceed? (y/n) " answer
 
 if [ "$answer" = "y" ]; then
     /usr/bin/echo "Starting Install"
@@ -24,19 +24,17 @@ if [ "$answer" = "y" ]; then
     /usr/bin/curl https://ollama.ai/install.sh | /bin/sh
     /usr/local/bin/ollama pull tinyllama:1.1b
 
-    # virtuelle umgebung insallieren
-   /usr/bin/apt install virtualenv
+    # virtual environment installer
+   /usr/bin/apt install virtualenv -y
 
-  # test to soeach
-    /usr/bin/apt install python3-pyaudio
-    /usr/bin/apt install portaudio19-dev
+  # test to speach
+    /usr/bin/apt install python3-pyaudio portaudio19-dev -y
+  # speach to text
+    /usr/bin/apt install flac libespeak1 -y
 
 
-    /usr/bin/apt install flac
 # sudo apt install espeak ffmpeg libespeak1 libespeak-dev
-
-  virtual venv
-
+  virtualenv venv
 
 elif [ "$answer" = "n" ]; then
     /usr/bin/echo "Don't install"
