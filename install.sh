@@ -32,7 +32,6 @@ if [ "$answer" = "y" ]; then
   # speach to text
     /usr/bin/apt install flac libespeak1 -y
 
-
 # sudo apt install espeak ffmpeg libespeak1 libespeak-dev
   virtualenv venv
 
@@ -42,23 +41,3 @@ elif [ "$answer" = "n" ]; then
 else
     /usr/bin/echo "Invalid response. Please answer with 'yes' or 'no'."
 fi
-
-
-
-
-
-
-
-## notes
-
-# for text to speach
-
-# sudo apt install espeak
-# pip install pyttsx3
-# sudo apt install libespeak-de
-# sudo apt-get install alsa-utils
-
-# for speach to text
-
-# to this moment do nothing because i don't now what i need on the pi
-

@@ -9,7 +9,11 @@ class AudioInterface:
     """
 
     def listen(self) -> str:
-
+        """
+        hört über ein mikro mit, wenn aufgehört zu sprechen wird die sprache zu text umgewandelt.
+        Und zurück gegeben.
+        :return:
+        """
         recognizer = sr.Recognizer()
 
         with sr.Microphone() as source:
@@ -19,12 +23,14 @@ class AudioInterface:
 
             recognizer.adjust_for_ambient_noise(source)
             print("Listening...")
+
             audio_data = recognizer.listen(source)
             print("Processing...")
 
             try:
                 # Using Google Web Speech API to recognize speech
-                text = recognizer.recognize_google(audio_data)
+                text = recognizer.recognize_whisper(audio_data)
+                print("text: " + text)
                 return text
             except sr.UnknownValueError:
                 print("Google Web Speech API could not understand audio")
