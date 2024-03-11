@@ -24,13 +24,18 @@ if [ "$answer" = "y" ]; then
     /usr/bin/curl https://ollama.ai/install.sh | /bin/sh
     /usr/local/bin/ollama pull tinyllama:1.1b
 
-    # virtual environment installer
-   /usr/bin/apt install virtualenv -y
-
   # test to speach
     /usr/bin/apt install python3-pyaudio portaudio19-dev -y
   # speach to text
     /usr/bin/apt install flac libespeak1 -y
+
+        # virtual environment installer
+   /usr/bin/apt install virtualenv -y
+
+    source venv/bin/activate
+
+    pip install -r requirements.txt
+    pip install git+https://github.com/openai/whisper.git soundfile
 
 # sudo apt install espeak ffmpeg libespeak1 libespeak-dev
   virtualenv venv
