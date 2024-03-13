@@ -15,12 +15,10 @@ class AudioInterface:
         :return:
         """
         recognizer = sr.Recognizer()
-
         with sr.Microphone() as source:
 
             recognizer.dynamic_energy_threshold = True
             recognizer.energy_threshold = 8000
-
             recognizer.adjust_for_ambient_noise(source)
             print("Listening...")
 
@@ -28,14 +26,13 @@ class AudioInterface:
             print("Processing...")
 
             try:
-                # Using Google Web Speech API to recognize speech
                 text = recognizer.recognize_whisper(audio_data)
-                print("text: " + text)
                 return text
+
             except sr.UnknownValueError:
-                print("Google Web Speech API could not understand audio")
+                print("Speech API could not understand audio")
             except sr.RequestError as e:
-                print("Could not request results from Google Web Speech API; {0}".format(e))
+                print("Could not request results from Speech API; {0}".format(e))
 
     def speak(self, text: str):
         """

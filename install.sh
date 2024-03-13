@@ -22,6 +22,7 @@ if [ "$answer" = "y" ]; then
 
     # install or update ollama
     /usr/bin/curl https://ollama.ai/install.sh | /bin/sh
+    /usr/bin/systemctl start ollama.service
     /usr/local/bin/ollama pull tinyllama:1.1b
 
   # test to speach
