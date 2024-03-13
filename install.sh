@@ -28,17 +28,17 @@ if [ "$answer" = "y" ]; then
     /usr/bin/apt install python3-pyaudio portaudio19-dev -y
   # speach to text
     /usr/bin/apt install flac libespeak1 -y
+# sudo apt install espeak ffmpeg libespeak1 libespeak-dev
 
-        # virtual environment installer
-   /usr/bin/apt install virtualenv -y
-
+  # virtual environment installer, create and activate
+    /usr/bin/apt install virtualenv -y
+    virtualenv venv
     source venv/bin/activate
 
+  # install components
     pip install -r requirements.txt
     pip install git+https://github.com/openai/whisper.git soundfile
 
-# sudo apt install espeak ffmpeg libespeak1 libespeak-dev
-  virtualenv venv
 
 elif [ "$answer" = "n" ]; then
     /usr/bin/echo "Don't install"
