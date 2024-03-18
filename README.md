@@ -11,7 +11,7 @@ Zudem gibt es auch einen text chat im terminal und eine web interface.
 Es ist möglich sich das auch auf einen eigenen raspberry pi zu installieren und zu benutzen.
 Hierzu folgende anleitung lesen und beachten.
 
-# Benötigt
+## Benötigte Komponenten
 1. Raspberry pi
 entwickelt und getestet auf einem Raspberry pi 4 2gb
 jedoch ist ein besseres raspberry empfehlenswert.
@@ -26,8 +26,8 @@ wehrend des betriebs wird der raspberry zwangsläufig sehr heiß daher ist eine 
 7. 1 * Wiederstand (button)
 
 
-# Einrichtung
-## Installation
+## Einrichtung
+### Installation
 ```bash
 sudo apt install git
 git clone https://github.com/Werterdererste/ai-assistent.git
@@ -37,24 +37,19 @@ sudo chmod o+x ./install.sh
 sudo ./install.sh
 
 source venv/bin/activate
-pip install -r requirements.txt
 
 python3 main.py --help
 ```
 
-## Verdrahtung
+### Verdrahtung
 Schließe eine RGB led an den raspberry pi an mit massenden Vorweideständen.
-Ebenfalls einen button. Geb die Pins, falls es nicht die standard (R = 22, G = 24, B = 26, Button = 37) pins sind  beim Ausführen als argumente an.
+Ebenfalls einen button. Geb die Pins, falls es nicht die standard (R = 22, G = 24, B = 26, Button = 37) pins sind beim Ausführen als argumente an.
+Sieh schaltplan:
+![schaltplan](documentation/schaltplan_Schaltplan.png)
 
-22-W-LedR-|
-24-W-LedG-|-G
-26-W-LedB-|
+Es kann auf einem steckbrett aufgebaut werden oder gelötet.
 
-37-W-Button-G
-
-Auf ein steckbrett oder verlöten.
-
-# Benutzung
+## Benutzung
 nachdem alles so weit Verdrahtet und installiert wurde kann man auch schon anfangen.
 Hier sind ein paar beispiele für die minimale bedienung.
 

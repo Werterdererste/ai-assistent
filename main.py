@@ -2,7 +2,7 @@ from status_led import LED
 from button import Button
 from audio_interface import AudioInterface
 from controller_assistent import ControllerAssistent
-from models import IModels, TestModel, TinyLlama11b
+from models import IModels, TestModel, TinyLlama11b, CustomModel
 from web_interface import WebInterface
 
 from time import sleep
@@ -16,6 +16,7 @@ class Program:
                  gpioPin_button: int):
 
         self.model: IModels = TinyLlama11b()
+        #self.model: IModels = CustomModel(model="stablelm2", systemprompt="Antwortest nur in einem Satz")
 
         self.status_led: LED = LED(gpioPin_R=gpopPin_R, gpioPin_G=gpopPin_G, gpioPin_B=gpopPin_B)
         self.button: Button = Button(gpioPin=gpioPin_button)
