@@ -20,7 +20,7 @@ class IModels(ABC):
         pass
 
     @abstractmethod
-    def send(self, prompt: str):
+    def send(self, prompt: str) -> str:
         """
         sendet ein prompt an das model und gibt eine rückgabe heraus
 
